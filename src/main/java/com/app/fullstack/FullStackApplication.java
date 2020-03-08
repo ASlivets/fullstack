@@ -2,10 +2,8 @@ package com.app.fullstack;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @SpringBootApplication
@@ -15,14 +13,13 @@ public class FullStackApplication {
     }
 
     @PostMapping("/handlePost")
-    public String handlePost(@RequestBody TransportObject transportObject) {
-        System.out.println(transportObject);
-        return "42";
+    public ResponseEntity<TransportObject> handlePost(@RequestBody TransportObject transportObject) {
+        return ResponseEntity.ok(transportObject);
     }
 
     @GetMapping("/handleGet")
-    public String handleGet() {
-        System.out.println();
-        return "666";
+    public ResponseEntity<TransportObject> handleGet() {
+        final TransportObject transportObject = new TransportObject("Here is get");
+        return ResponseEntity.ok(transportObject);
     }
 }

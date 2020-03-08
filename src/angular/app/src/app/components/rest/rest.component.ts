@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,9 +18,9 @@ export class RestComponent implements OnInit {
   private getSuffix: string = 'handleGet';
 
   payloadOfPostRequest: string;
-  payloadOfPostResponse: object;
+  payloadOfPostResponse: string;
 
-  payloadOfGetResponse: object;
+  payloadOfGetResponse: string;
 
   constructor(private http: HttpClient) {
   }
@@ -35,9 +35,8 @@ export class RestComponent implements OnInit {
     };
 
     this.http.post(url, payload, httpOptions).subscribe(res => {
-      console.log("Post request payload: " + payload);
-      this.payloadOfPostResponse = res;
-      console.log("Post response payload: " + res);
+      this.payloadOfPostResponse = JSON.stringify(res);
+      console.log(res);
     });
   }
 
@@ -45,8 +44,8 @@ export class RestComponent implements OnInit {
     const url = `${this.baseUrl}/${this.getSuffix}`;
 
     this.http.get(url).subscribe(res => {
-      this.payloadOfGetResponse = res;
-      console.log("Get response payload: " + res);
+      this.payloadOfGetResponse = JSON.stringify(res);
+      console.log(res);
     });
   }
 }

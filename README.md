@@ -1,7 +1,7 @@
 # FullStack
 This is a template of Full stack application.
 
-#Table of contents
+# Table of contents
 - [Technologies](#technologies)
 - [How does it works](#how-does-it-works)
     - [Client](#client)
@@ -14,7 +14,7 @@ This is a template of Full stack application.
 - Gradle as a build system and dependency manager;
 
 ## How does it works
-###Client
+### Client
 Angular is standalone full stack framework.
 On other hand it is also a great fill for frontend part of the application.
 It is possible to develop frontend independently from the server side. 
@@ -30,7 +30,7 @@ will be automatically reflected in the browser.
 
 This is a nice feature that will help in development.
 
-###Server
+### Server
 The server side is written in Java with SpringBoot.
 By convention SpringBoot application can serve static resources (like HTML and CSS)
 that are located in `src/main/resources/static`.
@@ -42,7 +42,7 @@ Since during development application is running as `gradlew bootRun`,
 as a part of the build scrip Angular sources will be generated to `build` folder.
 It can be change any moment in `src/angular/app/angular.json`, the value of `outputPath`.
 
-##How to run
+## How to run
 To run the application type `gradlew bootRun` in the command line.
 
 This command will execute `ng build` internally,
